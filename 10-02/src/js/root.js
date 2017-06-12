@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Index from './index';
 import ComponentList from './components/list';
+import ComponentDetails from './components/details';
 import {Router,Route,hashHistory} from 'react-router';
 
 export default class Root extends React.Component{
@@ -10,9 +11,11 @@ export default class Root extends React.Component{
       //这里替换了之前的 Index，变成了程序的入口
       <Router history={hashHistory}>
 
-        <Route component={Index} path="/"></Route>
+        <Route component={Index} path="/">
+          <Route component={ComponentDetails} path="details"></Route>
+        </Route>
 
-        <Route component={ComponentList} path="list"></Route>
+        <Route component={ComponentList} path="list/:id"></Route>
 
       </Router>
     );
